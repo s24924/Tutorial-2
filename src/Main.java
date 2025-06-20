@@ -55,11 +55,29 @@ public class Main {
             return -1;
         }
     }
+    public static int[] shift(int[] numbers, int k) {
+        if (numbers == null || numbers.length == 0) {
+            return numbers;
+        }
+
+        int length = numbers.length;
+        int[] resultArray = new int[length];
+
+        int effectiveShift = k % length;
+
+        for (int i = 0; i < length; i++) {
+            int newIndex = (i + effectiveShift) % length;
+            resultArray[newIndex] = numbers[i];
+        }
+
+        return resultArray;
+    }
     public static void main(String[] args) {
         int[] arr = {1, 3, 3, 5, 3};
         int[] arr2 = {1, 2, 3, 4, 5};
         System.out.println(Arrays.toString(filterEvenIndexOddValue(arr)));
         System.out.println(findMajorityElement(arr));
         System.out.println(findMajorityElement(arr2));
+        System.out.println(Arrays.toString(shift(arr, 3)));
     }
 }
